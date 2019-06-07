@@ -2,7 +2,9 @@
 
 {% block body %}
 
-<p>Who are you?</p>
+<p>
+  Log in to GOLEM or <a href="{{ url_for('register') }}">register a new account</a>
+</p>
 
 <font color="red">{{ error }}</font> 
 
@@ -25,8 +27,8 @@
         </td>
       </tr>
       <tr>
-        <td colspan="2">
-      <input type="submit" value="Login"/>
+        <td colspan="3">
+          <input type="submit" value="Login"/>
         </td>
       </tr>
   </form>

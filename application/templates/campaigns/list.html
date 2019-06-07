@@ -1,14 +1,12 @@
 {% extends "layout.html" %}
 
 {% block body %}
+  <p><b>Campaigns:</b></p>
   <table>
-    <tr>
-      <th>Campaigns</th>
-    </tr>
     {% for campaign in campaigns %}
-    <tr>
-      <td>{{ campaign.name }}</td>
-    </tr>
+    <ul>
+      <li>{{ campaign.name }}</li>
+    </ul>
     {% endfor %}
   </table>
   <a href="{{ url_for('campaigns_create') }}">Create a new campaign</a>

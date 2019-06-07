@@ -4,7 +4,26 @@
 <p>Create a campaign</p>
 
 <form method="POST" action="{{ url_for('campaigns_create') }}">
-    <input type="text" name="name" placeholder="Name"/>
-    <input type="submit" value="Create!"/>
+    <table>
+      <tr>
+        <td>
+            {{ form.name.label }}
+        </td>
+        <td>
+            {{ form.name }}
+        </td>
+        <td>
+	      <ul>
+            <li><font color="red">{{ error }}</font></li>
+
+	        {% for error in form.name.errors %}
+	        <li><font color="red">{{ error }}</font></li>
+	        {% endfor %}
+	      </ul>
+	    </td>
+      </tr>
+        <td colspan="3">
+          <input type="submit" value="Create"/>
+        </td>
 </form>
 {% endblock %}

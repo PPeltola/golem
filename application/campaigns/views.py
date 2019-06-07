@@ -13,9 +13,16 @@ def campaigns_list():
 @login_required
 def campaigns_create():
     if request.method == "GET":
-        return render_template("campaigns/new.html")
+        return render_template("campaigns/new.html", form=CampaignForm())
 
     form = CampaignForm(request.form)
+    
+    if not form.validate():
+        return render_template("campaigns/new.html", form=form)
+
+    if (Campaign.query.filter_by(name=form.name.data).first() != None):
+        return render_template("campaigns/new.html", form=form, error="Campaign name is already taken")
+    
     campaign = Campaign(form.name.data)
     
     db.session().add(campaign)
