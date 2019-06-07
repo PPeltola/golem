@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Campaigns</th>
+    </tr>
+    {% for campaign in campaigns %}
+    <tr>
+      <td>{{ campaign.name }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <a href="{{ url_for('campaigns_create') }}">Create a new campaign</a>
+{% endblock %}

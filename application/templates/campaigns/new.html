@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<p>Create a campaign</p>
+
+<form method="POST" action="{{ url_for('campaigns_create') }}">
+    <input type="text" name="name" placeholder="Name"/>
+    <input type="submit" value="Create!"/>
+</form>
+{% endblock %}
