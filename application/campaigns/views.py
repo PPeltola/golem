@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from application import app, db
 from application.campaigns.models import Campaign
@@ -24,6 +24,8 @@ def campaigns_create():
         return render_template("campaigns/new.html", form=form, error="Campaign name is already taken")
     
     campaign = Campaign(form.name.data)
+
+    campaign.account_id = current_user.id
     
     db.session().add(campaign)
     db.session().commit()
