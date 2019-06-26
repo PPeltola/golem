@@ -9,6 +9,7 @@ class User(db.Model):
     password = db.Column(db.String(30), nullable=False)
 
     owned_campaigns = db.relationship("Campaign", backref="account", lazy=True)
+    owned_characters = db.relationship("Character", backref="account", lazy=True)
 
     def __init__(self, username, password):
         self.username = username

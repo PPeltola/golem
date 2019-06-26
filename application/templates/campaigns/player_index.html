@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h3>{{ campaign.name }}</h3>
+  <p>This is the player index page for {{ campaign.name }}.</p>
+
+  {% if not owned_active_characters %}
+  <p><b>You do not have any active characters in this campaign.</b></p>
+  {% else %}
+  <p><b>Your active characters in this campaign:</b></p>
+  <table>
+    {% for character in owned_active_characters %}
+    <ul>
+      <li><a href="{{ url_for('characters_index', character_id=character) }}">{{ owned_active_characters[character] }}</a></li>
+    </ul>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+  {% if owned_inactive_characters %}
+  <p><b>Your inactive characters in this campaign:</b></p>
+  <table>
+    {% for character in owned_inactive_characters %}
+    <ul>
+      <li><a href="{{ url_for('characters_index', character_id=character) }}">{{ owned_inactive_characters[character] }}</a></li>
+    </ul>
+    {% endfor %}
+  </table>
+  {% endif %}
+{% endblock %}

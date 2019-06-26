@@ -10,11 +10,14 @@
       <p>
 	      Logged in as <i>{{ current_user.username }}</i>. <a href="{{ url_for('logout') }}">Log out</a>
       </p>
-      <hr>
 
       {% else %}
-      <!--<a href="{{ url_for('login') }}">Log in</a>-->
+      <p>
+        You are not logged in right now. You can <a href="{{ url_for('login') }}">log in</a> or <a href="{{ url_for('register') }}">register a new account</a>.
+      </p>
+        
       {% endif %}
+      <hr>
 
     {% block body %}
       <p>

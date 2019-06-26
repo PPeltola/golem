@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <p>
+    Welcome {{ current_user.username }}.
+  </p>
+
+  {% if not owned_campaigns %}
+  <p><b>You do not currently run any campaigns.</b></p>
+  {% else %}
+  <p><b>Campaigns you run:</b></p>
+  <table>
+    {% for campaign in owned_campaigns %}
+    <ul>
+      <li><a href="{{ url_for('campaigns_index', campaign_id=campaign.id) }}">{{ campaign.name }}</a></li>
+    </ul>
+    {% endfor %}
+  </table>
+  {% endif %}
+  <a href="{{ url_for('campaigns_create') }}">Create a new campaign</a>
+
+  {% if not characters_in_campaigns %}
+  <p><b>You do not have any active characters.</b></p>
+  {% else %}
+  <p><b>Your active characters:</b></p>
+  <table>
+    {% for campaign in characters_in_campaigns %}
+    <ul>
+      <li><a href="{{ url_for('campaigns_index', campaign_id=campaign[0]) }}">{{ campaign[1] }}</a></li>
+    
+      {% for character in characters_in_campaigns[campaign] %}
+        <ul>
+          <li> » <a href="{{ url_for('characters_index', character_id=character) }}">{{ characters_in_campaigns[campaign][character] }}</a></li>
+        </ul>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </table>
+  {% endif %}
+{% endblock %}

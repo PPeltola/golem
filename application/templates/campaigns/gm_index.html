@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h3>{{ campaign.name }}</h3>
+  <p>This is the GM-index page for {{ campaign.name }}.</p>
+
+  {% if not active_characters %}
+  <p><b>This campaign doesn't have any active characters!</b></p>
+  {% else %}
+  <p><b>Active characters in this campaign:</b></p>
+  <table>
+    {% for character in active_characters %}
+    <ul>
+      <li><a href="{{ url_for('characters_index', character_id=character) }}">{{ active_characters[character] }}</a></li>
+    </ul>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+  {% if inactive_characters %}
+  <p><b>Inactive characters in this campaign:</b></p>
+  <table>
+    {% for character in inactive_characters %}
+    <ul>
+      <li><a href="{{ url_for('characters_index', character_id=character) }}">{{ inactive_characters[character] }}</a></li>
+    </ul>
+    {% endfor %}
+  </table>
+  {% endif %}
+{% endblock %}

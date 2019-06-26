@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <p><b>{{ character.name }}</b></p>
+
+  {% if not character.active %}
+  <p>This character is not marked as active at the moment.</p>
+  <form method="POST" action="{{ url_for('characters_activate', character_id=character.id) }}">
+    <input type="submit" value="Reactivate this character"/> <font color="red">{{ error }}</font>
+  </form>
+  {% else %}
+  <p>This character is currently active.</p>
+  <form method="POST" action="{{ url_for('characters_deactivate', character_id=character.id) }}">
+    <input type="submit" value="Deactivate this character"/> <font color="red">{{ error }}</font>
+  </form>
+  {% endif %}
+
+  <p>There will be actual character sheet functionality here once I get that far.</p>
+
+{% endblock %}
