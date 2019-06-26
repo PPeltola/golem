@@ -16,7 +16,10 @@
     {% endfor %}
   </table>
   {% endif %}
+  <p><a href="{{ url_for('characters_create', campaign_id=campaign.id) }}">Create a new character for this campaign</a></p>
 
+  <hr>
+  
   {% if owned_inactive_characters %}
   <p><b>Your inactive characters in this campaign:</b></p>
   <table>

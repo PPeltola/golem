@@ -3,5 +3,5 @@
 {% block body %}
   <p><b>Welcome to GOLEM!</b></p>
 
-  <p>This is the index page for non-registered users. You can create an account to access more site functionality or browse by using the top navigation bar (if it exists yet).</p>
+  <p>This is the index page for non-registered users. You can <a href="{{ url_for('register') }}">register a new account</a> to access more site functionality or browse GOLEM anonymously.</p>
 {% endblock %}

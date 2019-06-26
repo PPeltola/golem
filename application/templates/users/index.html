@@ -17,7 +17,7 @@
     {% endfor %}
   </table>
   {% endif %}
-  <a href="{{ url_for('campaigns_create') }}">Create a new campaign</a>
+  <p><a href="{{ url_for('campaigns_create') }}">Create a new campaign</a></p>
 
   {% if not characters_in_campaigns %}
   <p><b>You do not have any active characters.</b></p>
