@@ -1,20 +1,31 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <p><b>{{ character.name }}</b></p>
+  <h4><b>{{ character.name }}</b></h4>
 
-  {% if not character.active %}
-  <p>This character is not marked as active at the moment.</p>
-  <form method="POST" action="{{ url_for('characters_activate', character_id=character.id) }}">
-    <input type="submit" value="Reactivate this character"/> <font color="red">{{ error }}</font>
-  </form>
-  {% else %}
-  <p>This character is currently active.</p>
-  <form method="POST" action="{{ url_for('characters_deactivate', character_id=character.id) }}">
-    <input type="submit" value="Deactivate this character"/> <font color="red">{{ error }}</font>
-  </form>
+  {% if error %}
+  <div align="center"><b><font color="red">{{ error }}</font></b></div>
   {% endif %}
 
-  <p>There will be actual character sheet functionality here once I get that far.</p>
+  <p>
+    {% if not character.active %}
+    This character is not marked as active at the moment.
+    <form method="POST" action="{{ url_for('characters_activate', character_id=character.id) }}">
+      <input type="submit" value="Reactivate this character"/>
+    </form>
+    {% else %}
+    This character is currently active.
+    <form method="POST" action="{{ url_for('characters_deactivate', character_id=character.id) }}">
+      <input type="submit" value="Deactivate this character"/>
+    </form>
+    {% endif %}
+    <form method="POST" action="{{ url_for('characters_delete', character_id=character.id) }}">
+      <input type="submit" value="Delete this character" onclick="return confirm('Are you sure? This will permanently delete {{ character.name }}.')"/>
+    </form>
+  </p>
+
+  <p>
+    There will be actual character sheet functionality here once I get that far.
+  </p>
 
 {% endblock %}

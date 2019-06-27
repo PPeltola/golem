@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+  {% if not active_characters %}
+  <p><b>You do not have any active characters.</b></p>
+  {% else %}
+  <p><b>Your active characters:</b></p>
+  <table>
+    {% for campaign in active_characters %}
+    <ul>
+      <li><a href="{{ url_for('campaigns_index', campaign_id=campaign[0]) }}">{{ campaign[1] }}</a></li>
+      {% for character in active_characters[campaign] %}
+      <ul>
+        <li> » <a href="{{ url_for('characters_index', character_id=character) }}">{{ active_characters[campaign][character] }}</a></li>
+      </ul>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+  {% if inactive_characters %}
+  <hr>
+  <p><b>Your inactive characters:</b></p>
+  <table>
+    {% for campaign in inactive_characters %}
+    <ul>
+      <li><a href="{{ url_for('campaigns_index', campaign_id=campaign[0]) }}">{{ campaign[1] }}</a></li>
+      {% for character in inactive_characters[campaign] %}
+      <ul>
+        <li> » <a href="{{ url_for('characters_index', character_id=character) }}">{{ inactive_characters[campaign][character] }}</a></li>
+      </ul>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </table>
+  {% endif %}
+{% endblock %}

@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required, current_user
+from flask_login import current_user, login_required
 
 from application import app, db
 from application.characters.models import Character
@@ -29,7 +29,19 @@ def characters_create(campaign_id):
 @app.route("/characters/<character_id>", methods=["GET"])
 @login_required
 def characters_index(character_id):
-    return render_template("characters/index.html", character=Character.query.get(character_id))
+    character=Character.query.get(character_id)
+
+    if not character:
+        return redirect(url_for("characters_list", user_id=current_user.id))
+
+    return render_template("characters/index.html", character=character)
+
+@app.route("/<user_id>/characters/", methods=["GET"])
+@login_required
+def characters_list(user_id):
+    return render_template("characters/list.html",
+     active_characters=Character.find_users_characters_sorted_by_campaign_by_status(status=1, user_id=user_id),
+     inactive_characters=Character.find_users_characters_sorted_by_campaign_by_status(status=0, user_id=user_id))
 
 @app.route("/characters/<character_id>/deactivate", methods=["POST"])
 @login_required
@@ -60,3 +72,16 @@ def characters_activate(character_id):
     db.session().commit()
 
     return redirect(url_for("characters_index", character_id=character.id))
+
+@app.route("/characters/<character_id>/delete", methods=["POST"])
+@login_required
+def characters_delete(character_id):
+    character = Character.query.get(character_id)
+    print("lol")
+    if current_user.get_id() != character.account_id and current_user.get_id() != Campaign.query.get(character.campaign_id).account_id:
+        return render_template("characters/index.html", character=Character.query.get(character_id), error="You can't delete other players' characters!")
+    
+    db.session().delete(character)
+    db.session().commit()
+
+    return redirect(url_for("index"))

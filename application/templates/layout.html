@@ -5,9 +5,9 @@
     <title>GOLEM</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
-      p {
-        margin: 10px;
-      }
+      p { margin: 10px;
+          display: inline-block; }
+      form { display: inline; }
     </style>
   </head>
 
@@ -20,6 +20,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
+            {% if current_user.is_authenticated and current_user.roles() == ["ADMIN"] %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('admin') }} ">Admin view</a>
+            </li>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('characters_list', user_id=current_user.id) }} ">List your characters</a>
+            </li>
+            {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('campaigns_list') }} ">List campaigns</a>
             </li>
@@ -31,7 +41,7 @@
           </ul>
           <div class="form-inline mt-2 mt-md-0">
             {% if current_user.is_authenticated %}
-            <p>Logged in as <i>{{ current_user.username }}</i>. <a href="{{ url_for('logout') }}">Logout</a></p>
+            <p style="color:gray;">Logged in as <i>{{ current_user.username }}</i>.  <a href="{{ url_for('logout') }}">Logout</a></p>
             {% else %}
             <a href="{{ url_for('login') }}">Login</a>
             {% endif %}

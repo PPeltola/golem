@@ -14,10 +14,10 @@ class Character(db.Model):
         self.active = True
     
     @staticmethod
-    def find_active_characters_owned_by_user_by_campaign(user_id):
+    def find_users_characters_sorted_by_campaign_by_status(status, user_id):
         stmt = text("SELECT Campaign.id, Campaign.name, Character.id, Character.name FROM Character"
                     " LEFT JOIN Campaign ON Campaign.id = Character.campaign_id"
-                    " WHERE (Character.active = 1 AND Character.account_id = :id)").params(id=user_id)
+                    " WHERE (Character.active = :status AND Character.account_id = :id)").params(status=status, id=user_id)
         
         res = db.engine.execute(stmt)
 
