@@ -8,8 +8,11 @@ class Campaign(db.Model):
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
     related_charaters = db.relationship("Character", backref="campaign", lazy=True)
 
-    def __init__(self, name):
+    starting_points = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, name, starting_points):
         self.name = name
+        self.starting_points = starting_points
     
     @staticmethod
     def find_campaigns_owned_by_user(user_id):

@@ -39,7 +39,7 @@ def campaigns_create():
     if Campaign.query.filter_by(name=form.name.data).first() != None:
         return render_template("campaigns/new.html", form=form, error="Campaign name is already taken")
     
-    campaign = Campaign(form.name.data)
+    campaign = Campaign(form.name.data, form.starting_points.data)
 
     campaign.account_id = current_user.id
     

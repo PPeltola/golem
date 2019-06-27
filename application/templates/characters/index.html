@@ -24,8 +24,75 @@
     </form>
   </p>
 
+  <hr>
+
+  <p>{{ character.name }} has <b>{{ character.unspent_points }} unspent character points</b> and has a total of <b>{{ character.total_points }} points</b>.</p>
+
+  <table border="1" cellpadding="5">
+    <tr>
+      <th>Attribute</th>
+      <th>Value</th>
+      <th>Points per level</th>
+      <th>Points spent</th>
+    </tr>
+    <tr>
+      <td>ST</td>
+      <td>{{ character.strength }}</td>
+      <td>
+        <form method="POST" action="{{ url_for('characters_modify', character_id=character.id, attribute='ST', way=1) }}">
+          <input type="submit" value="+10"/>
+        </form>
+        <form method="POST" action="{{ url_for('characters_modify', character_id=character.id, attribute='ST', way=0) }}">
+          <input type="submit" value="-10"/>
+        </form>
+      </td>
+      <td>{{ character.strength_spent }}</td>
+    </tr>
+    <tr>
+      <td>DX</td>
+      <td>{{ character.dexterity }}</td>
+      <td>
+        <form method="POST" action="{{ url_for('characters_modify', character_id=character.id, attribute='DX', way=1) }}">
+          <input type="submit" value="+20"/>
+        </form>
+        <form method="POST" action="{{ url_for('characters_modify', character_id=character.id, attribute='DX', way=0) }}">
+          <input type="submit" value="-20"/>
+        </form>
+      </td>
+      <td>{{ character.dexterity_spent }}</td>
+    </tr>
+    <tr>
+      <td>IQ</td>
+        <td>{{ character.intelligence }}</td>
+        <td>
+          <form method="POST" action="{{ url_for('characters_modify', character_id=character.id, attribute='IQ', way=1) }}">
+            <input type="submit" value="+20"/>
+          </form>
+          <form method="POST" action="{{ url_for('characters_modify', character_id=character.id, attribute='IQ', way=0) }}">
+            <input type="submit" value="-20"/>
+          </form>
+        </td>
+        <td>{{ character.intelligence_spent }}</td>
+    </tr>
+    <tr>
+      <td>HT</td>
+      <td>{{ character.health }}</td>
+      <td>
+        <form method="POST" action="{{ url_for('characters_modify', character_id=character.id, attribute='HT', way=1) }}">
+          <input type="submit" value="+10"/>
+        </form>
+        <form method="POST" action="{{ url_for('characters_modify', character_id=character.id, attribute='HT', way=0) }}">
+          <input type="submit" value="-10"/>
+        </form>
+      </td>
+      <td>{{ character.health_spent }}</td>
+    </tr>
+  </table>
+
+  <hr>
+
   <p>
-    There will be actual character sheet functionality here once I get that far.
+    There will hopefully be better, actual character sheet functionality here once I get that far.
   </p>
 
 {% endblock %}

@@ -13,8 +13,23 @@
             {{ form.name }}
         </td>
         <td>
+          <ul>
+            {% for error in form.name.errors %}
+            <li><font color="red">{{ error }}</font></li>
+            {% endfor %}
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            {{ form.starting_points.label }}
+        </td>
+        <td>
+            {{ form.starting_points }}
+        </td>
+        <td>
 	      <ul>
-	        {% for error in form.name.errors %}
+	        {% for error in form.starting_points.errors %}
 	        <li><font color="red">{{ error }}</font></li>
 	        {% endfor %}
 	      </ul>
