@@ -12,7 +12,8 @@ def index():
     if current_user.is_authenticated:
         return render_template("/users/index.html", 
         owned_campaigns=Campaign.find_campaigns_owned_by_user(current_user.get_id()),
-        active_characters_in_campaigns=Character.find_users_characters_sorted_by_campaign_by_status(1, current_user.get_id()))
+        active_characters_in_campaigns=Character.find_users_characters_sorted_by_campaign_by_status(1, current_user.get_id()),
+        characters_in_owned_campaigns=Campaign.count_active_characters_in_users_campaigns(current_user.get_id()))
     else:
         return render_template("index.html")
 

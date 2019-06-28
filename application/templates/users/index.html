@@ -14,7 +14,7 @@
   <table>
     {% for campaign in owned_campaigns %}
     <ul>
-      <li><a href="{{ url_for('campaigns_index', campaign_id=campaign.id) }}">{{ campaign.name }}</a></li>
+      <li><a href="{{ url_for('campaigns_index', campaign_id=campaign.id) }}">{{ campaign.name }}</a> - active characters: <i>{{ characters_in_owned_campaigns[campaign.id] }}</i></li>
     </ul>
     {% endfor %}
   </table>

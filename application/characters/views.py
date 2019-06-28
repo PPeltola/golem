@@ -16,7 +16,7 @@ def characters_create(campaign_id):
     form = CharacterForm(request.form)
 
     if not form.validate():
-        return render_template("characters/new.html", campaign=Campaign.query.get(campaign_id), form=CharacterForm())
+        return render_template("characters/new.html", campaign=Campaign.query.get(campaign_id), form=form)
     
     character = Character(form.name.data, Campaign.query.get(campaign_id).starting_points)
     character.account_id = current_user.id

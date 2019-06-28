@@ -6,10 +6,20 @@
 
 ## The current state
 
-At it's current state _GOLEM_ is a walking skeleton (adventurers beware!) of a campaign & character management system. The current build implements user registration & authentication, basic campaign creation & listing, basic character creation, listing, updating & deletion and available skill creation for admin users. The campaign & character management that the current buil implements is far from enough to be used in an actual campaign, but I atleast intend to develop the tool further on my spare time.
+At it's current state _GOLEM_ is a walking skeleton (adventurers beware!) of a campaign & character management system. The current build implements user registration & authentication, basic campaign creation & listing, basic character creation, reading & listing, updating & deletion and available skill creation for admin users. The campaign & character management that the current build implements is far from enough to be used in an actual campaign, but the foundations for further development are already in place.
 
-## Documentation
+## Heroku build
 
 [Current build in Heroku](https://tsoha-golem.herokuapp.com/)
 
-Sorry for the slow progress, I just haven't had enough time :/
+## Documentation
+
+Documentation goes here
+
+## Admin account
+
+The Heroku build hasa pre-created admin account:
+	- Username: admin
+	- Password admin123
+
+The current build only supports one admin account, and grants the privileges simply to the account named admin. If you want to run the application locally you can just create an account named admin.

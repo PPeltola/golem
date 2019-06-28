@@ -27,3 +27,19 @@ class Campaign(db.Model):
             ret.append({"id":row[0], "name":row[1]})
         
         return ret
+    
+    @staticmethod
+    def count_active_characters_in_users_campaigns(user_id):
+        stmt = text("SELECT Campaign.id, COUNT(Character.id) FROM Campaign"
+                    " LEFT JOIN Character ON Character.campaign_id = Campaign.id"
+                    " WHERE Campaign.account_id = :id"
+                    " GROUP BY Campaign.id").params(id=user_id)
+
+        res = db.engine.execute(stmt)
+
+        ret = {}
+
+        for row in res:
+            ret[row[0]] = row[1]
+        
+        return ret
