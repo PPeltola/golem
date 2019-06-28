@@ -1,4 +1,4 @@
-from application import db
+from application import app, db
 from sqlalchemy.sql import text
 
 class Character(db.Model):

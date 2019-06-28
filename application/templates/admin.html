@@ -2,6 +2,90 @@
 
 {% block body %}
 
-<p>This is the admin view. Functionality coming soon™.</p>
+<p>This is the admin view. You can add new skills using the form below:</p>
+
+<form method="POST" action="{{ url_for('skills_create') }}">
+        <table>
+          <tr>
+            <td>
+              {{ form.name.label }}
+            </td>
+            <td>
+              {{ form.name }}
+            </td>
+            <td>
+              <ul>
+                {% for error in form.name.errors %}
+                <li><font color="red">{{ error }}</font></li>
+                {% endfor %}
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                {{ form.attribute.label }}
+            </td>
+            <td>
+              <select name="attribute">
+                <option value="ST">ST</option>
+                <option value="DX">DX</option>
+                <option value="IQ">IQ</option>
+                <option value="HT">HT</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{ form.difficulty.label }}
+            </td>
+            <td>
+              {{ form.difficulty }}
+            </td>
+            <td>
+              <ul>
+                {% for error in form.difficulty.errors %}
+                <li><font color="red">{{ error }}</font></li>
+                {% endfor %}
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{ form.description.label }}
+            </td>
+            <td>
+              {{ form.description }}
+            </td>
+            <td>
+              <ul>
+                {% for error in form.name.errors %}
+                <li><font color="red">{{ error }}</font></li>
+                {% endfor %}
+              </ul>
+            </td>
+          </tr>
+          <td colspan="3">
+            <input type="submit" value="Create"/>
+          </td>
+        </table>
+</form>
+
+<hr>
+
+<table border="1" cellpadding="3">
+  <tr>
+    <th>Skill</th>
+    <th>Attribute</th>
+    <th>Difficulty</th>
+  </tr>
+  {% for skill in all_skills %}
+  
+  <tr>
+    <td>{{ skill.name }}</td>
+    <td>{{ skill.attribute }}</td>
+    <td>{{ skill.difficulty }}</td>
+  </tr>
+  {% endfor %}
+</table>
 
 {% endblock %}

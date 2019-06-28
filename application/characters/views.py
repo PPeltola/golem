@@ -5,6 +5,7 @@ from application import app, db
 from application.characters.models import Character
 from application.characters.forms import CharacterForm
 from application.campaigns.models import Campaign
+from application.skills.models import Skill
 
 @app.route("/campaigns/<campaign_id>/characters/new", methods=["GET", "POST"])
 @login_required
@@ -34,7 +35,7 @@ def characters_index(character_id):
     if not character:
         return redirect(url_for("characters_list", user_id=current_user.id))
 
-    return render_template("characters/index.html", character=character)
+    return render_template("characters/index.html", character=character, all_skills=Skill.query.all())
 
 @app.route("/<user_id>/characters/", methods=["GET"])
 @login_required
@@ -167,9 +168,9 @@ def characters_modify(character_id, attribute, way):
         error="Invalid attribute."
     
     if len(error) > 0:
-        return render_template("characters/index.html", character=character, error=error)
+        return render_template("characters/index.html", character=character, all_skills=Skill.query.all(), error=error)
 
     db.session().add(character)
     db.session().commit()
 
-    return render_template("characters/index.html", character=character)
+    return render_template("characters/index.html", character=character, all_skills=Skill.query.all())

@@ -57,6 +57,7 @@ from application import views
 from application.users import models, views
 from application.campaigns import models, views
 from application.characters import models, views
+from application.skills import models, views
 
 from application.users.models import User
 
