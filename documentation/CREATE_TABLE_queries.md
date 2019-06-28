@@ -23,6 +23,7 @@ CREATE TABLE campaign (
 	account_id INTEGER NOT NULL, 
 	starting_points INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
+	UNIQUE (name), 
 	FOREIGN KEY(account_id) REFERENCES account (id)
 );
 CREATE TABLE character (

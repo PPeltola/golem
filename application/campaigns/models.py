@@ -3,7 +3,7 @@ from sqlalchemy.sql import text
 
 class Campaign(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(30), nullable=False)
+    name = db.Column(db.String(30), unique=True, nullable=False)
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
     related_charaters = db.relationship("Character", backref="campaign", lazy=True)
