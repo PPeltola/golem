@@ -1,4 +1,4 @@
-#Installation instructions
+# Installation instructions
 
 GOLEM is developed on and currently only supporting Linux. I have no idea if and how it will work on other operating systems.
 

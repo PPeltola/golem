@@ -8,7 +8,7 @@ When you first open the application you will be greeted by an index page. When n
 	
 ## Registration
 
-The registration view asks for your new account's username and password along with a confirmatory 'repeat password' box. The username can't already existin the database and it has to be at least 3 characters long, the password has to be atleast 7 characters long and it must match the 'repeat password' field. If you want to create the admin account you just have to name your accout 'admin'.
+The registration view asks for your new account's username and password along with a confirmatory 'repeat password' box. The username can't already exist in the database and it has to be at least 3 characters long, the password has to be atleast 7 characters long and it must match the 'repeat password' field. If you want to create the admin account you just have to name your accout 'admin'.
 
 ## The login page
 

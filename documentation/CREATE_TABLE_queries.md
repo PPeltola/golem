@@ -8,8 +8,7 @@ CREATE TABLE skill (
 	attribute VARCHAR(5) NOT NULL, 
 	difficulty INTEGER NOT NULL, 
 	description VARCHAR(144) NOT NULL, 
-	PRIMARY KEY (id), 
-	UNIQUE (name)
+	PRIMARY KEY (id)
 );
 CREATE TABLE account (
 	id INTEGER NOT NULL, 
@@ -24,7 +23,6 @@ CREATE TABLE campaign (
 	account_id INTEGER NOT NULL, 
 	starting_points INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
-	UNIQUE (name), 
 	FOREIGN KEY(account_id) REFERENCES account (id)
 );
 CREATE TABLE character (

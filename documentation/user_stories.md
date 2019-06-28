@@ -75,7 +75,7 @@ UPDATE character SET intelligence = 11, unspent_points = 80, intelligence_spent 
 UPDATE character SET active = 0 WHERE character.id = bills_character_id
 ```
 
-And then deletes it:
+10. And then deletes it:
 ```
 DELETE FROM character WHERE character.id = bills_character_id;
 ```

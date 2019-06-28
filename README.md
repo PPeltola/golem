@@ -14,12 +14,13 @@ At it's current state _GOLEM_ is a walking skeleton (adventurers beware!) of a c
 
 ## Documentation
 
-Documentation goes here
+	- [Instructions for use](https://github.com/PPeltola/golem/blob/master/documentation/instructions.md)
+	- [Instructions for installing](https://github.com/PPeltola/golem/blob/master/documentation/installation.md)
+	- [CREATE TABLE queries](https://github.com/PPeltola/golem/blob/master/documentation/CREATE_TABLE_queries.md)
+	- [User stories](https://github.com/PPeltola/golem/blob/master/documentation/user_stories.md)
+	- [Reflections](https://github.com/PPeltola/golem/blob/master/documentation/reflections.md)
+	- [Database](https://github.com/PPeltola/golem/blob/master/documentation/database.md)
 
 ## Admin account
 
-The Heroku build hasa pre-created admin account:
-	- Username: admin
-	- Password admin123
-
-The current build only supports one admin account, and grants the privileges simply to the account named admin. If you want to run the application locally you can just create an account named admin.
+The current build only supports one admin account, and grants the privileges simply to the account named admin. To access admin functionality just create an account named admin.
