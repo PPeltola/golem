@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 class Character(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), unique=True, nullable=False)
-    active = db.Column(db.Boolean, nullable=False)
+    active = db.Column(db.Integer, nullable=False)
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
     campaign_id = db.Column(db.Integer, db.ForeignKey('campaign.id'), nullable=False)
@@ -24,7 +24,7 @@ class Character(db.Model):
 
     def __init__(self, name, starting_points):
         self.name = name
-        self.active = True
+        self.active = 1
 
         self.strength = 10
         self.dexterity = 10
