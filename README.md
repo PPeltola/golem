@@ -14,12 +14,12 @@ At it's current state _GOLEM_ is a walking skeleton (adventurers beware!) of a c
 
 ## Documentation
 
-	- [Instructions for use](https://github.com/PPeltola/golem/blob/master/documentation/instructions.md)
-	- [Instructions for installing](https://github.com/PPeltola/golem/blob/master/documentation/installation.md)
-	- [CREATE TABLE queries](https://github.com/PPeltola/golem/blob/master/documentation/CREATE_TABLE_queries.md)
-	- [User stories](https://github.com/PPeltola/golem/blob/master/documentation/user_stories.md)
-	- [Reflections](https://github.com/PPeltola/golem/blob/master/documentation/reflections.md)
-	- [Database](https://github.com/PPeltola/golem/blob/master/documentation/database.md)
+ - [Instructions for use](https://github.com/PPeltola/golem/blob/master/documentation/instructions.md)
+ - [Instructions for installing](https://github.com/PPeltola/golem/blob/master/documentation/installation.md)
+ - [CREATE TABLE queries](https://github.com/PPeltola/golem/blob/master/documentation/CREATE_TABLE_queries.md)
+ - [User stories](https://github.com/PPeltola/golem/blob/master/documentation/user_stories.md)
+ - [Reflections](https://github.com/PPeltola/golem/blob/master/documentation/reflections.md)
+ - [Database](https://github.com/PPeltola/golem/blob/master/documentation/database.md)
 
 ## Admin account
 
