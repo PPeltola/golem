@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 
 {% block body %}
+  {% if not campaigns %}
+  <p><b>There are no campaigns.</b></p>
+  {% else %}
   <p><b>Campaigns:</b></p>
   <table>
     {% for campaign in campaigns %}
@@ -9,6 +12,8 @@
     </ul>
     {% endfor %}
   </table>
+  {% endif %}
+
   {% if current_user.is_authenticated %}
   <a href="{{ url_for('campaigns_create') }}">Create a new campaign</a>
   {% endif %}
